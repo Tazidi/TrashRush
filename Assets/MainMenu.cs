@@ -74,11 +74,14 @@ public class MainMenu : MonoBehaviour
     }
 
     // 🔁 Restart game
+    // 🔁 Restart game berdasarkan scene aktif
     public void OnRestartClick()
     {
-        SceneManager.LoadScene("SampleScene");
+        string currentScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentScene);
         Time.timeScale = 1f;
     }
+
 
     // 🏠 Kembali ke menu utama
     public void OnMainMenuClick()
@@ -91,6 +94,16 @@ public class MainMenu : MonoBehaviour
     public void OnStageClick()
     {
         SceneManager.LoadScene("StageScene");
+    }
+
+    public void OnStage2Click()
+    {
+        SceneManager.LoadScene("Stage2");
+    }
+
+    public void OnStage3Click()
+    {
+        SceneManager.LoadScene("Stage3");
     }
 
     // ❌ Keluar dari game

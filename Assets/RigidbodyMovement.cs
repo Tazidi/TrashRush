@@ -170,4 +170,26 @@ public class RigidbodyMovement : MonoBehaviour
         anorganik2Object?.SetActive(false);
         anorganik3Object?.SetActive(false);
     }
+
+    private bool isSlowed = false;
+    private float originalSpeed;
+
+    public void ApplySlow(float factor, float duration)
+    {
+        if (isSlowed) return;
+
+        isSlowed = true;
+        originalSpeed = Speed;
+        Speed *= factor;
+
+        Debug.Log("Player slowed!");
+        Invoke(nameof(RemoveSlow), duration);
+    }
+
+    private void RemoveSlow()
+    {
+        Speed = originalSpeed;
+        isSlowed = false;
+        Debug.Log("Slow ended.");
+    }
 }

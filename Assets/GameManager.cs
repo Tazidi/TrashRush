@@ -75,5 +75,3 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("GameOverScene"); // Ganti dengan nama scene kamu
     }
 }
-// iwanbil
-// iwansyahputra

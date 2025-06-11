@@ -34,3 +34,4 @@ public class GameOverManager : MonoBehaviour
         }
     }
 }
+//  tes pul git

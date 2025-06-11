@@ -4,16 +4,14 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [Header("UI References")]
-    public GameObject pauseMenuUI; // Assign Canvas "pause" ke sini lewat Inspector
+    public GameObject pauseMenuUI; // Tarik Canvas "pause" ke sini di Inspector
 
     private bool isPaused = false;
 
     private void Start()
     {
-        // Pastikan waktu berjalan normal saat scene mulai
         Time.timeScale = 1f;
 
-        // Sembunyikan pause menu saat game dimulai
         if (pauseMenuUI != null)
             pauseMenuUI.SetActive(false);
 
@@ -23,24 +21,37 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
-        // Toggle pause saat tekan ESC
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
-            {
                 ResumeGame();
-            }
             else
-            {
                 PauseGame();
-            }
         }
     }
 
-    // ▶️ Resume dari pause
+    // ▶️ Resume game
     public void OnResumeClick()
     {
         ResumeGame();
+    }
+
+    // ⏸️ Pause game via tombol UI
+    public void OnPauseClick()
+    {
+        PauseGame();
+    }
+
+    private void PauseGame()
+    {
+        Time.timeScale = 0f;
+        isPaused = true;
+
+        if (pauseMenuUI != null)
+            pauseMenuUI.SetActive(true);
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void ResumeGame()
@@ -55,27 +66,14 @@ public class MainMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // ⏸️ Pause game
-    private void PauseGame()
-    {
-        Time.timeScale = 0f;
-        isPaused = true;
-
-        if (pauseMenuUI != null)
-            pauseMenuUI.SetActive(true);
-
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-    }
-
     // ▶️ Mulai permainan dari menu utama
     public void OnStartClick()
     {
-        SceneManager.LoadScene("SampleScene"); // Ganti sesuai nama scene game kamu
+        SceneManager.LoadScene("SampleScene");
         Time.timeScale = 1f;
     }
 
-    // 🔁 Restart permainan
+    // 🔁 Restart game
     public void OnRestartClick()
     {
         SceneManager.LoadScene("SampleScene");
@@ -85,11 +83,11 @@ public class MainMenu : MonoBehaviour
     // 🏠 Kembali ke menu utama
     public void OnMainMenuClick()
     {
-        SceneManager.LoadScene("StartScene"); // Ganti sesuai nama scene main menu kamu
+        SceneManager.LoadScene("StartScene");
         Time.timeScale = 1f;
     }
 
-    // 📋 Masuk ke pemilihan stage
+    // 📋 Masuk ke scene pemilihan stage
     public void OnStageClick()
     {
         SceneManager.LoadScene("StageScene");

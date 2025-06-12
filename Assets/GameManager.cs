@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -71,7 +71,10 @@ public class GameManager : MonoBehaviour
         else
             GameData.starCount = 0;
 
+        // 🔥 Tambahkan ini untuk menyimpan nama stage terakhir yang dimainkan
+        GameData.lastPlayedScene = SceneManager.GetActiveScene().name;
+
         // Pindah ke scene Game Over
-        SceneManager.LoadScene("GameOverScene"); // Ganti dengan nama scene kamu
+        SceneManager.LoadScene("GameOverScene");
     }
 }

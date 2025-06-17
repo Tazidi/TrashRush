@@ -18588,7 +18588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  timeLeft: 10
+  timeLeft: 120
   timerText: {fileID: 1851785341}
   scoreText: {fileID: 360829832}
 --- !u!4 &661509982
